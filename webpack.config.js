@@ -15,10 +15,22 @@ module.exports = {
         test: /\.css/,
         use: [
           {
-              loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader,
           },
           {
-              loader: 'css-loader',
+            loader: 'css-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg)/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              esModule: false,
+              name: 'images/[name].[ext]',//extはextensionの略
+            },
           },
         ],
       },
