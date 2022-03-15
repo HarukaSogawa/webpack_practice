@@ -24,14 +24,18 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name][ext]'//[ext]の中に拡張子のドットが含まれる
+        },
         use: [
-          {
-            loader: 'file-loader',
-            options: {
-              esModule: false,
-              name: 'images/[name].[ext]',//extはextensionの略
-            },
-          },
+          // {
+          //   loader: 'file-loader',
+          //   options: {
+          //     esModule: false,
+          //     name: 'images/[name].[ext]',//extはextensionの略
+          //   },
+          // },
         ],
       },
     ],
