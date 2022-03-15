@@ -26,16 +26,23 @@ module.exports = {
         test: /\.(png|jpg)/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext]'//[ext]の中に拡張子のドットが含まれる
+          filename: 'images/[name][ext]',//[ext]の中に拡張子のドットが含まれる
         },
         use: [
-          // {
-          //   loader: 'file-loader',
-          //   options: {
-          //     esModule: false,
-          //     name: 'images/[name].[ext]',//extはextensionの略
-          //   },
-          // },
+        ],
+      },
+      {
+        test: /\.pug/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'pug-html-loader',
+            options: {
+              pretty: true,
+            },
+          }
         ],
       },
     ],
@@ -45,7 +52,12 @@ module.exports = {
       filename: './stylesheets/main.css',
     }),
     new HtmlWebpackPlugin({
-      template: './src/templates/index.html',
+      template: './src/templates/index.pug',
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/templates/access.pug',
+      filename: 'access.html',
     }),
     new CleanWebpackPlugin(),
   ],
