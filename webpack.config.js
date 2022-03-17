@@ -12,6 +12,20 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js/,
+        exclude: /node_modules/,//node modulesは対象外にする
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { 'targets': '> 0.25%, not dead' }],//0.25%以上のシェアがありサポートが終了していないブラウザを対象
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.(css|sass|scss)/,
         use: [
           {
