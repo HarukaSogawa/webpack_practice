@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); //波括弧で囲うことによてプラグインの一部の機能のみ取り出す
 
 module.exports = {
+  mode: 'development',//デフォルトはproduction modeオプションの指定を省略
+  devtool: 'source-map',//デバッグしやすいように出力する
   entry: './src/javascripts/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -33,6 +35,9 @@ module.exports = {
           },
           {
             loader: 'css-loader',
+            options: {
+              sourceMap: false,//重くなるので使うときだけtureにする
+            },
           },
           {
             loader: 'sass-loader',
