@@ -45,12 +45,21 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg)/,
+        test: /\.(png|jpg|jpeg)/,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]',//[ext]の中に拡張子のドットが含まれる
         },
         use: [
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65,
+              },
+            }
+          },
         ],
       },
       {
