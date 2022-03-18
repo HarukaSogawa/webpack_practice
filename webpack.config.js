@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/javascripts/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'javascripts/main.js',
+    filename: 'javascripts/[name]-[contenthash].js',
   },
   module: {
     rules: [
@@ -58,7 +58,7 @@ module.exports = {
         test: /\.(png|jpg|jpeg)/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[name][ext]',//[ext]の中に拡張子のドットが含まれる
+          filename: 'images/[name]-[contenthash][ext]',//[ext]の中に拡張子のドットが含まれる
         },
         use: [
           {
@@ -90,7 +90,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: './stylesheets/main.css',
+      filename: './stylesheets/[name]-[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       template: './src/templates/index.pug',
