@@ -14,6 +14,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+          },
+        ],
+      },
+      {
         test: /\.js/,
         exclude: /node_modules/,//node modulesは対象外にする
         use: [
@@ -97,4 +106,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' webpack 1 c”¨
+    },
+  },
 }
